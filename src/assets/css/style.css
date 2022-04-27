@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,html{
+    min-width: 1200px;
+    color: #333333;
+}
+#app{
+    height: 100vh;
+    background-color: #000000;
+}
+/*控制整个滚动条*/
+
+::-webkit-scrollbar {
+    /* background-color: #E9ECF0; */
+    background-color: transparent;
+    width: 8px;
+    height: 8px;
+    background-clip: padding-box;
+}
+
+.el-scrollbar__wrap::-webkit-scrollbar {
+    background-color: transparent;
+    width: 8px;
+    height: 8px;
+    background-clip: padding-box;
+}
+
+
+/*滚动条两端方向按钮*/
+
+::-webkit-scrollbar-button {
+    height: 0px;
+}
+
+
+/*滚动条中间滑动部分*/
+
+::-webkit-scrollbar-thumb {
+    background-color: #008000;
+    box-shadow: 0px 1px 2px 0px rgba(172, 165, 188, 0.5);
+    border-radius: 3px;
+}
+
+
+/*滚动条右下角区域*/
+
+::-webkit-scrollbar-corner {
+    background-color: #E9ECF0;
+}
+
+.el-table, .el-table__expanded-cell{
+    background-color: #c8ddce;
+}
+.el-table{
+    border-radius: 10px;
+}
+.el-table th{
+    background-color: #008000 !important;
+    color: #ffffff !important;
+}
+.el-table tr{
+    background-color: #90a390;
+    color: #333333;
+}
+.el-table tr:nth-child(even){
+    background-color: #a7b5ae; 
+}
+.el-table th.el-table__cell>.cell{
+    font-weight: bold;
+    font-size: 16px;
+}
+.el-table--enable-row-hover .el-table__body tr:hover>td.el-table__cell {
+    background-color: #898f8b;
+}
+.el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+    border-bottom: 1px solid #8f8f91;
+}
+.el-table th.el-table__cell{
+    height: 60px;
+}
+.el-table td.el-table__cell{
+    height: 50px;
+    padding: 0;
+}
+.el-table::before {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    z-index: 1;
+}
+
+
+.el-pagination {
+    padding-bottom: 10px;
+    text-align: right;
+    color: #ffffff;
+}
+.el-pager li.btn-quicknext, .el-pager li.btn-quickprev,
+.el-pagination .btn-next, .el-pagination .btn-prev{
+    color: #ffffff;
+}
+.el-pagination button:hover,
+.el-pager li.active,
+.el-pager li:hover{
+    color: #008000;
+}
+.el-pagination button:disabled {
+    color: #C0C4CC;
+}
+.el-pager li,
+.el-pagination .btn-next, .el-pagination .btn-prev,
+.el-pagination button:disabled{
+    background: transparent;
+}
+
+.pkContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+.pkWarp{
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.lookEcharts{
+    position: fixed;
+    top: 15px;
+    right: 30px;
+ }
+
+
+.pkTableBg{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 20px ;
+    background: url("../../assets/images/bg.png") center no-repeat;
+    background-size: 120% 103%;
+    border-radius: 10px;
+}
+
+.pkTableBox{
+    flex: 1;
+    overflow: hidden;
+}
+
+
+
+
+.haderSearch {
+  position: absolute;
+  top: 3%;
+  left: 2%;
+  display: flex;
+  z-index: 9;
+}
+
+.searchButton {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  margin-left: 20px;
+}
+.searchButton .el-select {
+  margin-right: 10px;
+}
