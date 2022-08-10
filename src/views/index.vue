@@ -48,9 +48,9 @@
 					</el-table-column> -->
 					<el-table-column prop="EquipmentStatus" label="设备状态" align="center">
 						<template slot-scope="scope">
-							<el-button type="danger" v-if="scope.row.EquipmentStatus == 1" circle size="small"
-								class="red"></el-button>
-							<el-button type="success" v-else circle size="small" class="green"></el-button>
+							<el-button type="success" v-if="scope.row.EquipmentStatus == 1" circle size="small"
+								class="green"></el-button>
+							<el-button type="danger" v-else circle size="small" class="red"></el-button>
 						</template>
 					</el-table-column>
 					<el-table-column prop="MESConnection" label="MES链接" align="center">
