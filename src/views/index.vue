@@ -82,7 +82,7 @@
 		GetLineIdText,
 		GetStationIdText,
 		SearchWebOne,
-		Line_Equipment
+		Line_Station
 	} from "@/api/api.js";
 	export default {
 		data() {
@@ -155,15 +155,15 @@
 			// 下拉线体获取对应的工位
 			async lineChange(val) {
 				this.loadingStation = true
-				let result = await Line_Equipment({
+				let result = await Line_Station({
 					LineID: val
 				});
 				if (result.status == "200") {
 					let newList = []
-					for (let [text, value] of Object.entries(result.list.Line_Equipment)) {
+					for (let [text, value] of Object.entries(result.list.Line_Station)) {
 						newList.push({
-							text: value.Equipmentname,
-							value: value.EquipmentID
+							text: value.Stationname,
+							value: value.StationID
 						})
 					}
 					this.$nextTick(function() {

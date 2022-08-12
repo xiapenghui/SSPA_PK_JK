@@ -9,12 +9,13 @@
 				size="small"></el-button>
 			<template v-if="isShow">
 				<div class="searchButton">
-					<el-select v-model="params.Line" placeholder="选择线体" filterable clearable>
+					<el-select v-model="params.Line" placeholder="选择线体" @change="lineChange" filterable clearable>
 						<el-option v-for="item in optionsLine" :key="item.value" :label="item.text" :value="item.value">
 						</el-option>
 					</el-select>
 
-					<el-select v-model="params.Equipment" placeholder="选择设备" filterable clearable>
+					<el-select v-model="params.Equipment" placeholder="选择设备" :loading="loadingStation" filterable
+						clearable>
 						<el-option v-for="item in equipmentStation" :key="item.value" :label="item.text"
 							:value="item.value">
 						</el-option>
@@ -43,7 +44,8 @@
 	import {
 		GetLineIdText,
 		GetEquipmentIdText,
-		SearchWebTwo
+		SearchWebTwo,
+		Line_Equipment
 	} from "@/api/api.js";
 	export default {
 		data() {
@@ -66,6 +68,7 @@
 				KanBanTwoDWY: [],
 				KanBanTwoSCX: [],
 				KanBanTwoSCY: [],
+				loadingStation: false
 			};
 		},
 		methods: {
@@ -489,11 +492,38 @@
 
 			//获取设备下拉
 			async equipmentList() {
+				this.loadingStation = true
 				let result = await GetEquipmentIdText();
 				if (result.status == "200") {
 					this.equipmentStation = Object.values(result.list);
+					this.loadingStation = false
 				}
 			},
+
+
+
+			// 下拉线体获取对应的设备
+			async lineChange(val) {
+				this.loadingStation = true
+				let result = await Line_Equipment({
+					LineID: val
+				});
+				if (result.status == "200") {
+					let newList = []
+					for (let [text, value] of Object.entries(result.list.Line_Equipment)) {
+						newList.push({
+							text: value.Equipmentname,
+							value: value.EquipmentID
+						})
+					}
+					this.$nextTick(function() {
+						this.equipmentStation = newList
+						this.loadingStation = false
+					})
+				}
+			},
+
+
 
 			//获取echarts 数据
 			async getDataList() {
