@@ -3,9 +3,14 @@ import axios from "./request";
 //定义跨域代理路由
 
 // const api =  'http://192.168.1.18:9528/WebAPI/api'
-const api =  'http://10.177.34.15:23117/WebAPI/api'
-// const api = process.env.NODE_ENV == 'development' ? '/api' : 'http://127.0.0.1:555/WebAPI/api'
+// const api =  'http://192.168.1.125:8527/WebAPI/api'
+const api = process.env.NODE_ENV == 'development' ? '/WebAPI/api' : 'http://192.168.1.125:8527/WebAPI'
 //  /api 为配置跨域的路径变量
+
+//home页设备总连接数
+export const Equipment_LJList = (params) => {
+    return axios.post(api + '/DashbordMain/Equipment_LJList', params)
+}
 
 //图表一
 export const GetLineIdText = (params) => {
@@ -51,3 +56,5 @@ export const  Line_Station = (params) => {
 export const  Line_Equipment = (params) => {
     return axios.post(api + '/DashbordMain/Line_Equipment', params)
 }
+
+

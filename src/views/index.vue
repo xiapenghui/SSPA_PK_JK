@@ -1,14 +1,10 @@
 <template>
 	<div class="pkWarp">
-		<el-button type="success" size="small" class="lookEcharts" @click="$router.push({ path: '/echarts' })">查看图表
-		</el-button>
+		<!-- 	<el-button type="success" size="small" class="lookEcharts" @click="$router.push({ path: '/echarts' })">查看图表
+		</el-button> -->
 
 		<div class="haderSearch">
-			<el-button type="success" class="open" v-if="!isShow" @click="isShow = true" icon="el-icon-menu"
-				size="small"></el-button>
-			<el-button type="danger" class="close" v-if="isShow" @click="isShow = false" icon="el-icon-error"
-				size="small"></el-button>
-			<template v-if="isShow">
+			<template>
 				<div class="searchButton">
 					<el-select v-model="params.Line" clearable filterable placeholder="选择线体" @change="lineChange">
 						<el-option v-for="item in optionsLine" :key="item.value" :label="item.text" :value="item.value">
@@ -28,7 +24,8 @@
 
 		<div class="pkTableBg">
 			<div class="pkTableBox">
-				<el-table :data="tableData" style="width: 100%" height="100%" @row-click="rowClick" v-loading="loading"
+				<!-- <el-table :data="tableData" style="width: 100%" height="100%" @row-click="rowClick" v-loading="loading" -->
+				<el-table :data="tableData" style="width: 100%" height="100%"  v-loading="loading"
 					element-loading-text="加载中……" element-loading-spinner="el-icon-loading"
 					element-loading-background="rgba(0, 0, 0, 0.6)">
 					<el-table-column prop="Line" label="线体" align="left" header-align="center" show-overflow-tooltip>
@@ -36,16 +33,6 @@
 					<el-table-column prop="Station" label="工位" align="center"></el-table-column>
 					<el-table-column prop="Equipmentname" label="设备名称" align="center" show-overflow-tooltip>
 					</el-table-column>
-					<!-- <el-table-column prop="EquipmentPictureName" label="设备图片" align="center">
-						<template slot-scope="scope">
-							<img v-if="scope.row.EquipmentPictureName == null" src="@/assets/images/kb_top_logo1.png"
-								width="auto" height="38px" />
-							<img :src="
-                  'http://smartflow.diskstation.me:8009/DEVICE_VISUALIZATION/Resource/Equipment/' +
-                  scope.row.EquipmentPictureName
-                " v-else width="auto" height="38px" />
-						</template>
-					</el-table-column> -->
 					<el-table-column prop="EquipmentStatus" label="设备状态" align="center">
 						<template slot-scope="scope">
 							<el-button type="success" v-if="scope.row.EquipmentStatus == 1" circle size="small"
@@ -67,8 +54,20 @@
 							<el-button type="danger" v-else circle size="small" class="red"></el-button>
 						</template>
 					</el-table-column>
-					<el-table-column prop="RunningStatus" label="运行状态" align="center">
+					<el-table-column prop="CurrentState" label="运行状态" align="center">
 					</el-table-column>
+
+					<el-table-column prop="RunningStatus" label="记录时间" align="center">
+					</el-table-column>
+
+					<el-table-column align="center" label="详情" fixed="right" width="150">
+						<template slot-scope="scope">
+							<el-button type="success" size="small" @click="handleEdit(scope.row)">
+								<i class="el-icon-document"></i>
+							</el-button>
+						</template>
+					</el-table-column>
+
 				</el-table>
 			</div>
 			<el-pagination layout="prev, pager, next" :total="50" style="display:none"> </el-pagination>
@@ -95,7 +94,6 @@
 					Line: "",
 					Station: "",
 				},
-				isShow: false,
 				optionsLine: [],
 				optionStation: [],
 				tableData: [],
@@ -113,14 +111,16 @@
 					this.tableData = result.list.KanBanOne;
 					this.loading = false
 				} else {
-					this.loading = false
+					this.$message({
+						message: '暂时数据!',
+						type: 'warning'
+					});
 				}
 
 				console.log(result);
 			},
 			//搜索
 			headerButton() {
-
 				this.getDataList();
 			},
 			//获取线体下拉
@@ -140,7 +140,7 @@
 					this.loadingStation = false
 				}
 			},
-			rowClick(row) {
+			handleEdit(row) {
 				this.$router.push({
 					path: "/detail",
 					query: {
@@ -186,7 +186,8 @@
 
 <style scoped>
 	.haderSearch {
-		top: 93px;
+		top: 85px;
+		left: 10px;
 	}
 
 	.green {
@@ -195,5 +196,9 @@
 
 	.red {
 		background: red;
+	}
+
+	.pkTableBox {
+		margin-top: 50px;
 	}
 </style>

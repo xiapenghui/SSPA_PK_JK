@@ -2,7 +2,7 @@
   <div class="pcHeader">
     <img src="../../assets/images/kb_top_logo1.png" class="pcLogo" />
     <div class="pcHeaderText">
-      SSPA PK & JK 看板
+      SSPA PK & JK Dashboard
     </div>
   </div>
 </template>

@@ -1,13 +1,13 @@
 <template>
 	<div class="pkWarp">
-		<el-button type="success" size="small" class="lookEcharts" @click="$router.push({ path: '/index' })">返回首页
+		<el-button type="success" size="small" class="lookEcharts" @click="$router.push({ path: '/home' })">返回首页
 		</el-button>
 		<div class="pkTableBg">
 			<div class="haderSearch">
-				<el-button type="success" class="open" v-if="!isShow" @click="isShow = true" icon="el-icon-menu"
+				<!-- <el-button type="success" class="open" v-if="!isShow" @click="isShow = true" icon="el-icon-menu"
 					size="small"></el-button>
 				<el-button type="danger" class="close" v-if="isShow" @click="isShow = false" icon="el-icon-error"
-					size="small"></el-button>
+					size="small"></el-button> -->
 				<template v-if="isShow">
 					<div class="searchButton">
 						<el-date-picker v-model="params.StartDate" type="date" placeholder="时间从" format="yyyy-MM-dd"
@@ -78,7 +78,7 @@
 		data() {
 			return {
 				loading: false,
-				isShow: false,
+				isShow: true,
 				params: {
 					// current: 1,
 					// pagesize: 20,
@@ -213,8 +213,8 @@
 
 	.haderSearch {
 		position: absolute;
-		top: 90px;
-		left: 430px;
+		top: 85px;
+		left: 420px;
 		display: flex;
 		z-index: 9;
 	}

@@ -10,15 +10,14 @@ module.exports = {
         disableHostCheck: true,
         proxy: { // 设置代理
             '/api': {
-                target: 'http://smartflow.diskstation.me:8009/DEVICE_VISUALIZATION/api', //
+                target: 'http://192.168.1.125:8527', 
                 changeOrigin: true,
                 pathRewrite: { // 重写路径
                     '^/api': ''
                 }
             },
 			'/api_product': {
-			    // target: 'http://smartflow.diskstation.me:8009', //测试
-			    target: 'http://10.177.34.15:23117', //发布
+			    target: 'http://192.168.1.125:8527', //发布
 			    changeOrigin: true,
 			    pathRewrite: { // 重写路径
 			        '^/api_product': ''
