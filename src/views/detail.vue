@@ -24,11 +24,11 @@
 
 
 			<el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-				<el-tab-pane name="CQ"><span slot="label"><i class="el-icon-refresh"></i> 重启<b
+				<el-tab-pane name="CQ"><span slot="label"><i class="el-icon-refresh"></i>重启服务记录<b
 							class="tableNum">{{CQlength}}</b>次</span></el-tab-pane>
-				<el-tab-pane name="XG"><span slot="label"><i class="el-icon-edit"></i>修改<b
+				<el-tab-pane name="XG"><span slot="label"><i class="el-icon-edit"></i>修改后台记录<b
 							class="tableNum">{{XGlength}}</b>次</span></el-tab-pane>
-				<el-tab-pane name="SC"><span slot="label"><i class="el-icon-delete"></i>删除<b
+				<el-tab-pane name="SC"><span slot="label"><i class="el-icon-delete"></i>删除结果记录<b
 							class="tableNum">{{SClength}}</b>次</span></el-tab-pane>
 			</el-tabs>
 			<div class="pkTableBox">
@@ -214,7 +214,7 @@
 	.haderSearch {
 		position: absolute;
 		top: 85px;
-		left: 420px;
+		left: 600px;
 		display: flex;
 		z-index: 9;
 	}

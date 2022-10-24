@@ -1,8 +1,7 @@
 <template>
 	<div class="pkWarp">
-		<!-- 	<el-button type="success" size="small" class="lookEcharts" @click="$router.push({ path: '/echarts' })">查看图表
-		</el-button> -->
-
+		<el-button type="success" size="small" class="lookEcharts" @click="$router.push({ path: '/home' })">返回首页
+		</el-button>
 		<div class="haderSearch">
 			<template>
 				<div class="searchButton">
@@ -25,10 +24,16 @@
 		<div class="pkTableBg">
 			<div class="pkTableBox">
 				<!-- <el-table :data="tableData" style="width: 100%" height="100%" @row-click="rowClick" v-loading="loading" -->
-				<el-table :data="tableData" style="width: 100%" height="100%"  v-loading="loading"
+				<el-table :data="tableData" style="width: 100%" height="100%" v-loading="loading"
 					element-loading-text="加载中……" element-loading-spinner="el-icon-loading"
 					element-loading-background="rgba(0, 0, 0, 0.6)">
 					<el-table-column prop="Line" label="线体" align="left" header-align="center" show-overflow-tooltip>
+					</el-table-column>
+					<el-table-column prop="raster" label="数量" align="center">
+						<template slot-scope="scope">
+							<el-tag v-if="scope.row.raster == 0">1</el-tag>
+							<el-tag v-else>{{scope.row.raster}}</el-tag>
+						</template>
 					</el-table-column>
 					<el-table-column prop="Station" label="工位" align="center"></el-table-column>
 					<el-table-column prop="Equipmentname" label="设备名称" align="center" show-overflow-tooltip>
@@ -49,15 +54,18 @@
 					</el-table-column>
 					<el-table-column prop="MESbackground" label="MES后台" align="center">
 						<template slot-scope="scope">
-							<el-button type="success" v-if="scope.row.MESbackground == 1" circle size="small"
+							<el-button type="success" v-if="scope.row.MESbackground == 0" circle size="small"
 								class="green"></el-button>
 							<el-button type="danger" v-else circle size="small" class="red"></el-button>
 						</template>
 					</el-table-column>
-					<el-table-column prop="CurrentState" label="运行状态" align="center">
+					<el-table-column prop="CurrentState" label="运行状态" align="center">Station
 					</el-table-column>
 
 					<el-table-column prop="RunningStatus" label="记录时间" align="center">
+						<template slot-scope="scope">
+							{{scope.row.RunningStatus.replace('T',' ')}}
+						</template>
 					</el-table-column>
 
 					<el-table-column align="center" label="详情" fixed="right" width="150">
