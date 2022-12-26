@@ -518,7 +518,7 @@
 						// 		'完成率'
 						// 	]
 						// },
-						color: ['#de0000', '#f6ba20', 'green', '#008dd3'],
+						color: ['#de0000', 'green', '#f6ba20',  '#008dd3'],
 						grid: {
 							left: "1%",
 							right: "0",

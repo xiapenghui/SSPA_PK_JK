@@ -12,7 +12,7 @@
 
 					<el-select v-model="params.Station" clearable filterable placeholder="选择工位"
 						:loading="loadingStation">
-						<el-option v-for="item in optionStation" :key="item.value" :label="item.text"
+						<el-option v-for="item in optionStation" :key="item.index" :label="item.text"
 							:value="item.value">
 						</el-option>
 					</el-select>
@@ -54,7 +54,7 @@
 					</el-table-column>
 					<el-table-column prop="MESbackground" label="MES后台" align="center">
 						<template slot-scope="scope">
-							<el-button type="success" v-if="scope.row.MESbackground == 0" circle size="small"
+							<el-button type="success" v-if="scope.row.MESbackground == 1" circle size="small"
 								class="green"></el-button>
 							<el-button type="danger" v-else circle size="small" class="red"></el-button>
 						</template>
@@ -144,8 +144,8 @@
 				this.loadingStation = true
 				let result = await GetStationIdText();
 				if (result.status == "200") {
-					this.optionStation = Object.values(result.list);
-					this.loadingStation = false
+					this.optionStation =
+						this.loadingStation = false
 				}
 			},
 			handleEdit(row) {
@@ -163,6 +163,7 @@
 			// 下拉线体获取对应的工位
 			async lineChange(val) {
 				this.loadingStation = true
+				this.optionStation=[]
 				let result = await Line_Station({
 					LineID: val
 				});
