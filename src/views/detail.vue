@@ -89,9 +89,6 @@
 					"YYYY-MM-DD"),
 					EndDate: moment(new Date()).add('year', 0).format("YYYY-MM-DD"),
 				},
-				// startTime: moment(moment(new Date()).add('year', 0).format("YYYY-MM-DD")).subtract(7, "days").format(
-				// 	"YYYY-MM-DD"),
-				// endTime: moment(new Date()).add('year', 0).format("YYYY-MM-DD"),
 				tableIndex: 0,
 				activeName: "CQ",
 				tableData: [],
@@ -144,9 +141,6 @@
 		},
 		mounted() {
 			this.params = this.$route.query;
-			var end = moment(new Date()).add('year', 0).format("YYYY-MM-DD");
-			this.params.StartDate = moment(end).subtract(7, "days").format("YYYY-MM-DD")
-			this.params.EndDate = moment(new Date()).add('year', 0).format("YYYY-MM-DD")
 			this.getDataList();
 		},
 	};

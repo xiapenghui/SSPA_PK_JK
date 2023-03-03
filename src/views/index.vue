@@ -85,6 +85,7 @@
 
 <script>
 	// 引入封装好的接口
+	import moment from "moment";
 	import {
 		GetLineIdText,
 		GetStationIdText,
@@ -149,12 +150,15 @@
 				}
 			},
 			handleEdit(row) {
+				var end = moment(new Date()).add('year', 0).format("YYYY-MM-DD");
 				this.$router.push({
 					path: "/detail",
 					query: {
 						Line: row.LineID,
 						Station: row.StationID,
 						Equipment: row.EquipmentID,
+						StartDate: moment(end).subtract(7, "days").format("YYYY-MM-DD"),
+						EndDate: moment(new Date()).add('year', 0).format("YYYY-MM-DD")
 					},
 				});
 			},
@@ -163,7 +167,7 @@
 			// 下拉线体获取对应的工位
 			async lineChange(val) {
 				this.loadingStation = true
-				this.optionStation=[]
+				this.optionStation = []
 				let result = await Line_Station({
 					LineID: val
 				});
