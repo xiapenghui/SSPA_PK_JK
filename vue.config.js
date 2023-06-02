@@ -10,14 +10,14 @@ module.exports = {
         disableHostCheck: true,
         proxy: { // 设置代理
             '/api': {
-                target: 'http://192.168.1.125:8527', 
+                target: 'hhttp://192.168.1.216:9000/api', 
                 changeOrigin: true,
                 pathRewrite: { // 重写路径
                     '^/api': ''
                 }
             },
 			'/api_product': {
-			    target: 'http://192.168.1.125:8527', //发布
+			    target: 'http://192.168.1.216:9000/api', //发布
 			    changeOrigin: true,
 			    pathRewrite: { // 重写路径
 			        '^/api_product': ''

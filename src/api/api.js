@@ -2,8 +2,8 @@
 import axios from "./request";
 //定义跨域代理路由
 
-// const api =  'http://192.168.1.216:9000/api'
-const api =  'http://10.177.34.15:23117/WebAPI/api'
+const api =  'http://192.168.1.216:9000/api'
+// const api =  'http://10.177.34.15:23117/WebAPI/api'
 // const api = process.env.NODE_ENV == 'development' ? '/api' : 'http://192.168.1.216:9000/api'
 // const api = process.env.NODE_ENV == 'development' ? '/WebAPI/api' : 'http://10.177.34.15:23117/WebAPI'
 //  /api 为配置跨域的路径变量
